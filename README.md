@@ -26,50 +26,13 @@ Purpose: Manages backend dependencies, scripts, and metadata. Lists libraries an
 Location: /mern/backend/Dockerfile
 Purpose: Defines how to build the Docker image for the backend. Specifies the base image, copies application files, installs dependencies, and sets up the start command.
 
-## Step
-
-### Configuration of docker-compose.yml
-``` docker-compose,yml
-services:
-  frontend:
-    build: /mern/frontend
-    container_name: frontend
-    ports:
-      - "5173:5173"  
-    networks:
-      - mtvpc
-
-  backend:
-    build: ./mern/backend
-    container_name: backend
-    ports:
-      - "8000:8000" 
-    environment:
-      - MONGODB_URI=mongodb://mongo:27017/merndb
-    networks:
-      - mtvpc
-    depends_on:
-      - mongo
-
-  mongo:
-    image: mongo:latest  
-    container_name: mongo
-    ports:
-      - "27017:27017"  
-    networks:
-      - mtvpc
-    volumes:
-      - mongo-data:/data/db  
-networks:
-  mtvpc:
-    driver: bridge
-
-volumes:
-  mongo-data:
-    driver: local  # Persist MongoDB data locally '''
+docker-compose.yml
+Location: Root directory of the project ( /docker-compose.yml)
+Purpose: Defines how MongoDB is set up and connected. Specifies the image (mongo:latest), ports to expose, and volume to persist data. MongoDB itself does not require a separate Dockerfile or additional files for standard operations
 
 
 
+## Steps
 ### docker compose up -d
 
 Purpose: docker-compose up -d starts Docker containers in detached mode, meaning they run in the background. In VSCode, this command builds and runs the services defined in docker-compose.yml file

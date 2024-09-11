@@ -1,26 +1,32 @@
 services:
   backend:
-    build: ./mern/backend
+    build: 
+    context: ./mern/backend
+    dockerfile: Docherfile
+    container_name: backend
     ports:
-      - "5050:5050" 
-    networks:
-      - mern_network
+      - "8000:8000" 
     environment:
-      MONGO_URI: mongodb://mongo:27017/mydatabase  
+      - MongoDB_URI=mongodb://mongo:27017/merndb
+    networks:
+      - mtvpc
     depends_on:
       - mongodb
 
   frontend:
-    build: ./mern/frontend
+    build: 
+    context: ./mern/frontend
+    dockerfile: Docherfile
+    container_name: frontend
     ports:
       - "5173:5173"  
     networks:
-      - mern_network
-    environment:
-      REACT_APP_API_URL: http://backend:5050 
+      - mtvpc
+   
 
   mongodb:
     image: mongo:latest  
+    container_name: mongo
     ports:
       - "27017:27017"  
     networks:
@@ -29,7 +35,7 @@ services:
       - mongo-data:/data/db  
 
 networks:
-  mern_network:
+  mtvpc:
     driver: bridge 
 
 volumes:

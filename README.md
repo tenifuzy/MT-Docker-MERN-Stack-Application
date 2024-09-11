@@ -30,9 +30,11 @@ docker-compose.yml
 Location: Root directory of the project ( /docker-compose.yml)
 Purpose: Defines how MongoDB is set up and connected. Specifies the image (mongo:latest), ports to expose, and volume to persist data. MongoDB itself does not require a separate Dockerfile or additional files for standard operations
 
+![Screenshot (261)](https://github.com/user-attachments/assets/c826f8ce-104e-4dec-a9e1-6466ae9348b7)
+![Screenshot (262)](https://github.com/user-attachments/assets/59e7fcee-2854-4712-b0a9-145c35227253)
 
 
-## Steps
+## Execution Steps
 ### docker compose up -d
 
 Purpose: docker-compose up -d starts Docker containers in detached mode, meaning they run in the background. In VSCode, this command builds and runs the services defined in docker-compose.yml file
@@ -88,41 +90,4 @@ Docker desktop Hub is a cloud-based repository where Docker users can store and 
 
 
 
-### Create a network for the docker containers
-
-`docker network create demo`
-
-### Build the client 
-
-```sh
-cd mern/frontend
-docker build -t mern-frontend .
-```
-
-### Run the client
-
-`docker run --name=frontend --network=demo -d -p 5173:5173 mern-frontend`
-
-### Verify the client is running
-
-Open your browser and type `http://localhost:5173`
-
-### Run the mongodb container
-
-`docker run --network=demo --name mongodb -d -p 27017:27017 -v ~/opt/data:/data/db mongodb:latest`
-
-### Build the server
-
-```sh
-cd mern/backend
-docker build -t mern-backend .
-```
-
-### Run the server
-
-`docker run --name=backend --network=demo -d -p 8000:8000 mern-backend`
-
-## Using Docker Compose
-
-`docker compose up -d`
 

@@ -30,7 +30,6 @@ Purpose: Defines how to build the Docker image for the backend. Specifies the ba
 
 ### Configuration of docker-compose.yml
 ``` docker-compose,yml
----
 services:
   frontend:
     build: /mern/frontend
@@ -61,19 +60,52 @@ services:
       - mtvpc
     volumes:
       - mongo-data:/data/db  
-
 networks:
   mtvpc:
     driver: bridge
 
 volumes:
   mongo-data:
-    driver: local  # Persist MongoDB data locally
-'''
+    driver: local  # Persist MongoDB data locally '''
 
 
 
+### docker compose up -d
 
+Purpose: docker-compose up -d starts Docker containers in detached mode, meaning they run in the background. In VSCode, this command builds and runs the services defined in docker-compose.yml file
+
+![Screenshot (245)](https://github.com/user-attachments/assets/17a577a8-a853-417e-8867-34634adea3cf)
+
+![Screenshot (248)](https://github.com/user-attachments/assets/26a8cb35-8155-4d9b-b2e9-ec6ff4bcee32)
+
+![Screenshot (249)](https://github.com/user-attachments/assets/2a5354ae-01fe-4546-b6ea-e52af63c2662)
+
+### _docker images_
+This command will list all Docker images, showing the REPOSITORY, TAG, IMAGE ID, CREATED, and SIZE for each image.
+
+![Screenshot (255)](https://github.com/user-attachments/assets/d8101bb1-361e-4711-bbf7-52e6ecc26743)
+
+### _docker ps_
+This command will display a list of active containers, including their CONTAINER ID, IMAGE, COMMAND, CREATED, STATUS, PORTS, and NAMES. To view all containers, including stopped ones
+
+![Screenshot (256)](https://github.com/user-attachments/assets/5de22d8b-f0f8-4545-9079-674d401d9e53)
+
+## Verify the Services
+1. Frontend: Open your browser and navigate to http://localhost:5173 to access the React application.
+
+![Screenshot (257)](https://github.com/user-attachments/assets/368bc1f2-e9f1-471c-b408-deb56bf33123)
+
+2. MongoDB: Connect to MongoDB at mongodb http://localhost:27017 using a MongoDB client like MongoDB Compass.
+
+![Screenshot (258)](https://github.com/user-attachments/assets/eab1da7b-b4ff-43fb-925b-0a733e665a4d)
+
+
+## Services running on  Docker desktop  hub
+Docker desktop Hub is a cloud-based repository where Docker users can store and share Docker images. It provides a vast collection of pre-built images for popular software, allowing you to easily pull and use them in your projects
+
+![Screenshot (260)](https://github.com/user-attachments/assets/b34b95d8-acec-4e31-8bb9-e467aa1cc25c)
+
+![Screenshot (259)](https://github.com/user-attachments/assets/a843c0a5-eb23-4db9-a220-09b28bd8d925)
 
 
 
